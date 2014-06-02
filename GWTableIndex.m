@@ -12,14 +12,12 @@
 
 @implementation GWTableIndex
 
-@synthesize dataSource, delegate, indexGroups;
-
 -(void)reloadIndex
 {
     // Remove any previously loaded subviews
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    indexGroups = [dataSource storeIndexGroups];
+    _indexGroups = [_dataSource storeIndexGroups];
     [self layoutIndexGroups];
 }
 
@@ -45,7 +43,7 @@
     __block GWTableIndexGroup *groupAbove = nil;
     
     // Loop through all index group items, setting their constraints
-    [indexGroups enumerateObjectsUsingBlock:^(GWTableIndexGroup *group, NSUInteger i, BOOL *stop) {
+    [_indexGroups enumerateObjectsUsingBlock:^(GWTableIndexGroup *group, NSUInteger i, BOOL *stop) {
        
         if ([group.indexes count] > 0) {
             NSArray *generatedConstraints;
@@ -67,7 +65,7 @@
             }
             
             // If the index item is the last one, set the constraint to be flush with the bottom of the superview
-            if (i == [indexGroups count] - 1) {
+            if (i == [_indexGroups count] - 1) {
                 verticalConstraintFormatString = [verticalConstraintFormatString stringByAppendingString:@"|"];
             }
             
@@ -90,7 +88,7 @@
     UIView *item = [self hitTest:[[touches anyObject] locationInView:self] withEvent:nil];
     if ([item isKindOfClass:[GWTableIndexItem class]]) {
         GWTableIndexItem *indexItem = (GWTableIndexItem *)item;
-        [delegate jumpToSectionWithIndexPath:indexItem.indexPath];
+        [_delegate jumpToSectionWithIndexPath:indexItem.indexPath];
     }
 }
 
@@ -99,7 +97,7 @@
     UIView *item = [self hitTest:[[touches anyObject] locationInView:self] withEvent:nil];
     if ([item isKindOfClass:[GWTableIndexItem class]]) {
         GWTableIndexItem *indexItem = (GWTableIndexItem *)item;
-        [delegate jumpToSectionWithIndexPath:indexItem.indexPath];
+        [_delegate jumpToSectionWithIndexPath:indexItem.indexPath];
     }
 }
 

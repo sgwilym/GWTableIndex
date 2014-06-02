@@ -14,6 +14,6 @@
 @property NSString *initial;
 @property NSIndexPath *indexPath;
 
--(GWTableIndexItem *)initWithIcon:(UIImage *)iconImage orInitial:(NSString *)letter andIndexPath:(NSIndexPath *)itemIndexPath;
+-(GWTableIndexItem *)initWithIcon:(UIImage *)iconImage orInitial:(NSString *)initial andIndexPath:(NSIndexPath *)indexPath;
 
 @end

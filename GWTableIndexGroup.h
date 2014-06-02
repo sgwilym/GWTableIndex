@@ -11,8 +11,8 @@
 @interface GWTableIndexGroup : UIView
 
 @property NSArray *indexes;
-@property UIImage *capIcon;
+@property UIImage *icon;
 
--(GWTableIndexGroup *)initWithIndexes:(NSArray *)groupIndexes andCapIcon:(UIImage *)capIconImage;
+-(GWTableIndexGroup *)initWithIndexes:(NSArray *)indexes andIcon:(UIImage *)iconImage;
 
 @end

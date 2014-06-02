@@ -10,22 +10,20 @@
 
 @implementation GWTableIndexItem
 
-@synthesize icon, initial, indexPath;
-
-- (GWTableIndexItem *)initWithIcon:(UIImage *)iconImage orInitial:(NSString *)letter andIndexPath:(NSIndexPath *)itemIndexPath
+- (GWTableIndexItem *)initWithIcon:(UIImage *)iconImage orInitial:(NSString *)initial andIndexPath:(NSIndexPath *)indexPath
 {
     self = [super init];
     if (self) {
         
         // Set properties
-        icon = iconImage;
-        initial = letter;
-        indexPath = itemIndexPath;
+        _icon = iconImage;
+        _initial = initial;
+        _indexPath = indexPath;
         
         // Sort out the view
         NSDictionary *views;
         
-        if (icon != nil) {
+        if (_icon != nil) {
             UIImageView *indexIconView = [[UIImageView alloc] initWithImage:iconImage];
             indexIconView.translatesAutoresizingMaskIntoConstraints = NO;
             [self addSubview:indexIconView];

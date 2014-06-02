@@ -11,21 +11,19 @@
 
 @implementation GWTableIndexGroup
 
-@synthesize indexes, capIcon;
-
-- (GWTableIndexGroup *)initWithIndexes:(NSArray *)groupIndexes andCapIcon:(UIImage *)capIconImage
+- (GWTableIndexGroup *)initWithIndexes:(NSArray *)indexes andIcon:(UIImage *)iconImage
 {
     self = [super init];
     if (self) {
         
-        indexes = groupIndexes;
-        capIcon = capIconImage;
+        _indexes = indexes;
+        _icon = iconImage;
         
         __block id itemAbove = nil;
         
         // Create a cap icon image if necessary
-        if (capIcon != nil) {
-            UIImageView *capIconImageView = [[UIImageView alloc] initWithImage:capIcon];
+        if (_icon != nil) {
+            UIImageView *capIconImageView = [[UIImageView alloc] initWithImage:iconImage];
             
             [self addSubview:capIconImageView];
             capIconImageView.translatesAutoresizingMaskIntoConstraints = NO;
